@@ -9,7 +9,7 @@
     <p>{{ item.title }}</p>
     <p>Price: $ {{ item.price }}</p>
     <div class="flex">
-    <input type="number" [(ngModel)]="item.quantity" (change)="adjustQuantity(item.id, item.quantity)">
+    <input type="number" [(ngModel)]="item.quantity" (change)="adjustQuantity(item.id, item.quantity)" >
     <button (click)="removeFromCart(item.id)">Remove</button>
 </div>
   </div>

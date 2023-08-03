@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService, Product } from '../services/products.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -10,13 +11,15 @@ import { ProductsService, Product } from '../services/products.service';
     products!: Product[];
     filteredProducts!: Product[];
     search!: string;
+    data: any;
 
-    constructor(private productService: ProductsService) {}
+    constructor(private productService: ProductsService, private route: ActivatedRoute) {}
 
       ngOnInit(): void {
         this.productService.getProducts().subscribe((products: Product[])=>{
           this.products = products;
           this.filteredProducts = this.products;
+          this.data = this.route.snapshot.data['data'];
         });
       }
       filterProducts(){
